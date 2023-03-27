@@ -4,16 +4,13 @@
   <test name="Test(failed)">
     <parameter name="browserName" value="edge"/>
     <classes>
-      <class name="com.test.HomePageTest">
+      <class name="com.test.QuantityAlertsPageTest">
         <methods>
-          <include name="validateHomePageFields"/>
+          <include name="validateQuantityAlertPageFields"/>
           <include name="preRun"/>
-          <include name="validateHomePageTopPanelFields"/>
-          <include name="validateHomePageLeftPanelFields"/>
-          <include name="validateQuickEmailAndQuickSmsOption"/>
           <include name="launchBrowser"/>
         </methods>
-      </class> <!-- com.test.HomePageTest -->
+      </class> <!-- com.test.QuantityAlertsPageTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

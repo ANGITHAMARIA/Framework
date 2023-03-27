@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import com.base.AutomationBase;
 import com.pages.HomePage;
 import com.pages.LoginPage;
+import com.utilities.PropertyUtil;
 import com.utilities.WebBrowserUtils;
 
 public class LoginPageTest extends AutomationBase
@@ -19,6 +20,8 @@ public class LoginPageTest extends AutomationBase
 	WebBrowserUtils webbrowser;
 	LoginPage login;
 	HomePage home;
+	PropertyUtil propertyutil;
+	Properties prop;
 
 	@BeforeMethod
 	public void preRun() throws IOException
@@ -27,16 +30,16 @@ public class LoginPageTest extends AutomationBase
 		login=new LoginPage(driver);
 		webbrowser=new WebBrowserUtils();
 		home=new HomePage(driver);
-		//waitutil=new WaitUtil();
-		//prop = propertyutil.getProperty("Credentials.properties");
+		//waitutil=new WaitUtil();	
+		prop = propertyutil.getProperty("config.properties");
 		//driver.get(prop.getProperty("URL"));
-		webbrowser.launchUrl(driver,"https://qalegend.com/mobile_service/panel/login");
+		webbrowser.launchUrl(driver,prop.getProperty("url"));
 }
 	@Test
 	public void validateLogin()
 	{
-		login.enterValueToUserName("admin@admin.com");
-		login.enterValueToPassword("password");
+		login.enterValueToUserName(prop.getProperty("username"));
+		login.enterValueToPassword(prop.getProperty("password"));
 		login.clickOnLoginButton();
 		Assert.assertTrue(home.isSuccessPopupFieldDisplayed(),"Failure message:Unable to login to application");
 	}

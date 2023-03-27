@@ -3,15 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.test.HomePageTest">
+      <class name="com.test.QuantityAlertsPageTest">
         <methods>
-          <include name="validateHomePageFields"/>
+          <include name="validateQuantityAlertPageFields"/>
           <include name="preRun"/>
-          <include name="validateHomePageTopPanelFields"/>
-          <include name="validateHomePageLeftPanelFields"/>
           <include name="launchBrowser"/>
         </methods>
-      </class> <!-- com.test.HomePageTest -->
+      </class> <!-- com.test.QuantityAlertsPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

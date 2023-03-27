@@ -495,4 +495,11 @@ public class HomePage {
 		return webaction.CheckElementIsEnabled(driver, quicksmssendbtn);
 	}
 	
+	public QuantityAlertsPage navigateToQuantityAlertsPage()
+	{
+		toClickOnAlertButton();
+		toClickOnNumberOfAlerts();
+		return new QuantityAlertsPage(driver);
+	}
+	
 }
