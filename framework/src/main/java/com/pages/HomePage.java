@@ -159,7 +159,7 @@ public class HomePage {
 	@FindBy(xpath="//button[@form='send_quicksms']")
 	WebElement quicksmssendbtn;
 	
-	public HomePage(WebDriver  driver) //constructor of login page
+	public HomePage(WebDriver  driver) //constructor of home page
 	{
 		this.driver=driver;
 		PageFactory.initElements(driver, this); //to initialize the above mentioned elements
@@ -173,6 +173,11 @@ public class HomePage {
 	public Boolean isReparationFieldDisplayed()
 	{
 		return webaction.CheckElementIsDisplayed(driver, reparationdiv);
+	}
+	
+	public void toClickOnReparationMoreInfoBtn()
+	{
+		webaction.clickOnTheElement(driver, reparationmoreinfolink);
 	}
 	
 	public Boolean isClientFieldDisplayed()
@@ -500,6 +505,12 @@ public class HomePage {
 		toClickOnAlertButton();
 		toClickOnNumberOfAlerts();
 		return new QuantityAlertsPage(driver);
+	}
+	
+	public OrderAndReparationsPage navigateToOrderAndReparationsPage()
+	{
+		toClickOnReparationMoreInfoBtn();
+		return new OrderAndReparationsPage(driver);
 	}
 	
 }

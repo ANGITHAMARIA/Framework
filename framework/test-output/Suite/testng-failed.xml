@@ -4,13 +4,13 @@
   <test name="Test(failed)">
     <parameter name="browserName" value="edge"/>
     <classes>
-      <class name="com.test.QuantityAlertsPageTest">
+      <class name="com.test.OrderAndReparationsPageTest">
         <methods>
-          <include name="validateQuantityAlertPageFields"/>
+          <include name="validateUpdateStatusFunctionalityInReparationsTable"/>
           <include name="preRun"/>
           <include name="launchBrowser"/>
         </methods>
-      </class> <!-- com.test.QuantityAlertsPageTest -->
+      </class> <!-- com.test.OrderAndReparationsPageTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

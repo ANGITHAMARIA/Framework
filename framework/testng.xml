@@ -6,7 +6,8 @@
     <classes>
     <!--  <class name="com.test.LoginPageTest"/> -->
     <!--   <class name="com.test.HomePageTest"/> -->
-     <class name="com.test.QuantityAlertsPageTest"/>
+    <!--   <class name="com.test.QuantityAlertsPageTest"/>-->
+     <class name="com.test.OrderAndReparationsPageTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

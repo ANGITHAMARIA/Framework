@@ -3,13 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.test.QuantityAlertsPageTest">
+      <class name="com.test.OrderAndReparationsPageTest">
         <methods>
-          <include name="validateQuantityAlertPageFields"/>
+          <include name="validateUpdateStatusFunctionalityInReparationsTable"/>
           <include name="preRun"/>
           <include name="launchBrowser"/>
         </methods>
-      </class> <!-- com.test.QuantityAlertsPageTest -->
+      </class> <!-- com.test.OrderAndReparationsPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

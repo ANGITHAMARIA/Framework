@@ -11,13 +11,14 @@ public class WaitUtil
 {
 	public void forImplicitWait(WebDriver driver,int timeout)
 	{
-	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeout));
 	}
 	
 	public void forExplicitWait(WebDriver driver,WebElement element,int duration)
 	{
-		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(5));
-	//	wait.until(ExpectedConditions.visibilityOf(element).click());
+		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(duration));
+		WebElement status=wait.until(( ExpectedConditions.visibilityOf(element)));
+		status.click();
 	}
 	
 }
