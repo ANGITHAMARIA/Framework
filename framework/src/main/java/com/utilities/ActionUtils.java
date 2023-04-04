@@ -295,6 +295,19 @@ public class ActionUtils {
 		System.out.println(e.getCause());
 	}
 	}
-
+	
+	public void toEnterValueToTheElement(WebDriver driver,WebElement element,String text)
+	{
+		try 
+		{
+			JavascriptExecutor js=(JavascriptExecutor) driver;
+	//		js.executeScript("document.getElementById('value').value='text'");
+		} 
+		catch (Exception e) 
+		{
+			System.out.println(e.getMessage());
+			System.out.println(e.getCause());
+		}	
+	}
 	
 }

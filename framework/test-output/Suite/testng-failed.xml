@@ -6,7 +6,7 @@
     <classes>
       <class name="com.test.OrderAndReparationsPageTest">
         <methods>
-          <include name="validateUpdateStatusFunctionalityInReparationsTable"/>
+          <include name="validateFilterResultFunctionalityInReparationTable"/>
           <include name="preRun"/>
           <include name="launchBrowser"/>
         </methods>
