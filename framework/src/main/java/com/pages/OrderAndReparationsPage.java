@@ -9,14 +9,18 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.utilities.ActionUtils;
 import com.utilities.GenericUtils;
 import com.utilities.WebActionUtils;
+import com.utilities.WebBrowserUtils;
 
 public class OrderAndReparationsPage {
 
 	WebDriver driver;
 	WebActionUtils webaction=new WebActionUtils();
 	GenericUtils gen=new GenericUtils();
+	ActionUtils action=new ActionUtils();
+	WebBrowserUtils webbrowser=new WebBrowserUtils();
 	
 	@FindBy(xpath="//h1[text()='Order & Reparations']")
 	WebElement pageheader;
@@ -40,7 +44,7 @@ public class OrderAndReparationsPage {
 	WebElement orderandreparationstable;
 	
 	@FindBy(xpath="//input[@class='form-control input-sm input-xs']")
-	WebElement searchtxtbox;
+	public WebElement searchtxtbox;
 	
 	@FindBy(xpath="//i[@class='fa fa-file-pdf']")
 	WebElement downloadpdficon;
@@ -57,6 +61,9 @@ public class OrderAndReparationsPage {
 	@FindBy(xpath="//div[@class='dataTables_info']")
 	WebElement paginationinreparationstable;
 	
+	@FindBy(xpath="(//table//tr//td)[2]")
+	public WebElement reparationcoderowone;
+	
 	@FindBy(xpath="(//span[@class='row_status label'])[1]")
 	WebElement statuscolumnrowone;
 	
@@ -69,7 +76,7 @@ public class OrderAndReparationsPage {
 	@FindBy(xpath="//select[@class='form-control']")
 	WebElement statustextboxinupdatestatuspopup;
 	
-	@FindBy(xpath="//input[@class='btn btn-primary']")
+	@FindBy(xpath="//input[@value='Update']")
 	WebElement updatebtninupdatestatuspopup;
 	
 	@FindBy(xpath="//div[@class='alert alert-success']")
@@ -177,8 +184,10 @@ public class OrderAndReparationsPage {
 	@FindBy(xpath="(//button[@class='close'])[1]")
 	WebElement closebuttonofnewreparationpopup;
 	
-	@FindBy(xpath="//span[text()='Print']")
-	WebElement printbtninprintinvoicetab;
+	//@FindBy(xpath="//span[text()='Print']")
+	@FindBy(xpath="//span[text()='Cancel']")
+	//WebElement printbtninprintinvoicetab;
+	WebElement cancelbtninprintinvoicetab;
 	
 	@FindBy(xpath="//button[@id='upload_modal_btn']")
 	WebElement uploadpicturebutton;
@@ -209,6 +218,129 @@ public class OrderAndReparationsPage {
 
 	@FindBy(xpath="//span[text()='Last Modified']")
 	WebElement lastmodifiedfieldincolumnvisibiltytab;
+	
+	@FindBy(xpath="//table[@id='dynamic-table']//tr")
+	List <WebElement> reparationtableheaders;
+	
+	@FindBy(xpath="(//button[text()='actions '])[1]")
+	WebElement actionsbtn;
+	
+	@FindBy(xpath="(//a[text()=' View Payments'])[1]")
+	WebElement viewpaymentsoptn;
+	
+	@FindBy(xpath="(//h4[@id='myModalLabel']")
+	WebElement viewpaymentheader;
+	
+	@FindBy(xpath="//i[@class='fa fa-edit']")
+	WebElement editbtninviewpaymentspopup;
+	
+	@FindBy(xpath="//i[@class='fa fa-trash']")
+	WebElement deletebtninviewpaymentspopup;
+	
+	@FindBy(xpath="//a[@class='btn-icon btn btn-danger']")
+	WebElement confirmdeletepaymentinviewpaymentspopup;
+	
+	@FindBy(xpath="//div[@class='alert alert-success']")
+	WebElement paymentdeletedsuccesspopupmsg;
+	
+	@FindBy(xpath="(//button[@class='close'])[1]")
+	WebElement paymentdeletedsuccesspopupclosebtn;
+	
+	@FindBy(xpath="//div[@class='alert alert-success']")
+	WebElement paymentstatusisalreadypaidalertmsg;
+	
+	@FindBy(xpath="(//button[@class='close'])[1]")
+	WebElement paymentstatusisalreadypaidalertmsgclosebtn;
+	
+	@FindBy(xpath="(//a[text()=' Add Payment'])[1]")
+	WebElement addpaymentoptn;
+	
+	@FindBy(xpath="//h4[text()='Add Payment']")
+	WebElement addpaymentheader;
+	
+	@FindBy(xpath="//input[@class='form-control datetime']")
+	WebElement datefieldinaddpayment;
+	
+	@FindBy(xpath="//input[@id='reference_no']")
+	WebElement referencenoinaddpayment;
+	
+	@FindBy(xpath="//input[@id='amount_1']")
+	WebElement amountinaddpayment;
+	
+	@FindBy(xpath="//select[@id='paid_by_1']")
+	WebElement payingbyinaddpayment;
+	
+	@FindBy(xpath="//textarea[@id='note']")
+	WebElement noteinaddpayment;
+	
+	@FindBy(xpath="//input[@name='add_payment']")
+	WebElement addpaymentbtninaddpayment;
+	
+	@FindBy(xpath="//div[@class='alert alert-success']")
+	WebElement paymentaddedsuccessmsg;
+	
+	@FindBy(xpath="(//button[@class='close'])[1]")
+	WebElement paymentaddedsuccessmsgclosebtn;
+	
+	@FindBy(xpath="(//a[text()=' View Attachments'])[1]")
+	WebElement viewattachementoptn;
+	
+	@FindBy(xpath="//label[text()='Attachments']")
+	WebElement viewattachmentheader;
+	
+	@FindBy(xpath="//div[@class='file-drop-zone-title']")
+	WebElement droplocationinviewattachment;
+	
+	@FindBy(xpath="//span[text()='Browse …']")
+	WebElement browsebtninviewattachment;
+	
+	@FindBy(xpath="(//span[text()='Remove'])[1]")
+	WebElement removefilebtninviewattachment;
+	
+	@FindBy(xpath="//span[text()='Upload']")
+	WebElement uploadbtninviewattachment;
+	
+	@FindBy(xpath="//div[@class='progress-bar bg-success progress-bar-success']")
+	WebElement donesuccessmsginviewattachment;
+	
+	@FindBy(xpath="(//button[@class='close'])[4]")
+	WebElement closebtninviewattachment;
+	
+	@FindBy(xpath="//button[@title='View details']")
+	WebElement viewdetailsbuttoninviewattachment;
+	
+	@FindBy(xpath="(//a[text()=' Invoice'])[1]")
+	WebElement invoiceoptn;
+	
+	@FindBy(xpath="(//a[@id='email_invoice'])[1]")
+	WebElement emailinvoiceoptn;
+	
+	@FindBy(xpath="//input[@class='bootbox-input bootbox-input-email form-control']")
+	WebElement emailaddresstxtbxinemailinvoiceoptn;
+	
+	@FindBy(xpath="//button[text()='OK']")
+	WebElement okbtninemailinvoiceoptn;
+	
+	@FindBy(xpath="(//a[text()=' View log'])[1]")
+	WebElement viewlogoptn;
+	
+	@FindBy(xpath="//h1[text()='View log']")
+	WebElement viewlogpageheader;
+	
+	@FindBy(xpath="(//a[text()=' Print Barcode'])[1]")
+	WebElement printbarcodeoptn;
+	
+	@FindBy(xpath="//h1[text()='Print Barcode']")
+	WebElement printbarcodeheader;
+	
+	@FindBy(xpath="//input[@value='Update']")
+	WebElement updatebtninprintbarcodepage;
+	
+	@FindBy(xpath="//button[text()=' Print']")
+	WebElement printbtninprintbarcodepage;
+	
+	@FindBy(xpath="//div[@id='loadingmessage']")
+	public WebElement loader;
 	
 	public OrderAndReparationsPage(WebDriver  driver) //constructor of home page
 	{
@@ -301,6 +433,11 @@ public class OrderAndReparationsPage {
 		return webaction.CheckElementIsDisplayed(driver, paginationinreparationstable);
 	}
 	
+	public String toGetTheReparationCodeInRowOne()
+	{
+		String reparationcode =webaction.getTheElementText(driver, reparationcoderowone);
+		return reparationcode;
+	}
 	public void toClickOnStatusColumnRowOne()
 	{
 		webaction.clickOnTheElement(driver, statuscolumnrowone);
@@ -735,7 +872,8 @@ public class OrderAndReparationsPage {
 			if(!temp.equals(parent))
 			{
 			driver.switchTo().window(temp);
-			webaction.clickOnTheElement(driver, printbtninprintinvoicetab);
+			//webaction.clickOnTheElement(driver, cancelbtninprintinvoicetab);
+			webbrowser.closeBrowser(driver);
 			}
 		}
 		driver.switchTo().window(parent);
@@ -775,7 +913,243 @@ public class OrderAndReparationsPage {
 	
 	public void toClickOnColumnVisibilityBackground()
 	{
-		webaction.clickOnTheElement(driver, columnvisibiltybackground);
+		action.toMoveToElementByOffsetAndClick(driver, 500, 350);
 	}
 	
+//	public String toSearchAHeaderInReparationTable(String header)
+//	{
+//		String flag="false";
+//		for(int i=1;i<reparationtableheaders.size();i++)
+//		{
+//		if(reparationtableheaders.contains(header))
+//		{
+//			System.out.println(header +"found");
+//			flag="true";
+//		}
+//		}
+//		return flag;	
+//	}
+	
+//	public void toSearchAHeaderInReparationTable()
+//	{
+//		for(int i=1;i<reparationtableheaders.size();i++)
+//		{
+//			System.out.println(reparationtableheaders);
+//		}
+//		
+//	}
+	public void toClickOnPendingRepairsTab()
+	{
+		webaction.clickOnTheElement(driver, pendingrepairstab);
+	}
+	
+	public void toClickOnCompletedRepairsTab()
+	{
+		webaction.clickOnTheElement(driver, completedrepairstab);
+	}
+	
+	public void toClickOnActionDropdownOptn()
+	{
+		webaction.clickOnTheElement(driver, actionsbtn);
+	}
+	
+	public void toClickOnViewPaymentInActionDropdown()
+	{
+		webaction.clickOnTheElement(driver, viewpaymentsoptn);
+	}
+	
+	public boolean isViewPaymentHeaderDisplayed()
+	{
+		return webaction.CheckElementIsDisplayed(driver, viewpaymentheader);
+	}
+	
+	public void toClickOnEditBtnInViewPaymentInActionDropdown()
+	{
+		webaction.clickOnTheElement(driver, editbtninviewpaymentspopup);
+	}
+	
+	public boolean isPaymentStatusisAlreadyPaidAlertMsgDisplayed()
+	{
+		return webaction.CheckElementIsDisplayed(driver, paymentstatusisalreadypaidalertmsg);
+	}
+	
+	public void toClickOnPaymentStatusisAlreadyPaidAlertMsgCloseBtn()
+	{
+		webaction.clickOnTheElement(driver, paymentstatusisalreadypaidalertmsgclosebtn);
+	}
+	
+	public void toClickOnDeleteBtnInViewPaymentInActionDropdown()
+	{
+		webaction.clickOnTheElement(driver, deletebtninviewpaymentspopup);
+	}
+	
+	public void toClickOnConfirmDeleteBtnInViewPaymentInActionDropdown()
+	{
+		webaction.clickOnTheElement(driver, confirmdeletepaymentinviewpaymentspopup);
+	}
+	
+	public boolean isPaymentDeletedSuccessPopupMsgDisplayed()
+	{
+		return webaction.CheckElementIsDisplayed(driver, paymentdeletedsuccesspopupmsg);
+	}
+	
+	public void toClickOnPaymentDeletedSuccessPopupCloseBtn()
+	{
+		webaction.clickOnTheElement(driver, paymentdeletedsuccesspopupclosebtn);
+	}
+	
+	public void toClickOnAddPaymentOptn()
+	{
+		webaction.clickOnTheElement(driver, addpaymentoptn);
+	}
+		
+	public boolean isAddPaymentHeaderDisplayed()
+	{
+		return webaction.CheckElementIsDisplayed(driver, addpaymentheader);
+	}
+	
+	public void toClearDateFieldValueInAddPayment()
+	{
+		webaction.clearTheElement(driver, datefieldinaddpayment);
+	}
+	
+	public void toEnterValueToDateFieldInAddPayment(String date)
+	{
+		webaction.enterTheValue(driver, datefieldinaddpayment, date);
+	}
+	
+	public void toClearAmountinAddPayment()
+	{
+		webaction.clearTheElement(driver, amountinaddpayment);
+	}
+	
+	public void toEnterAmountInAddPayment(String value)
+	{
+		webaction.enterTheValue(driver, amountinaddpayment, value);
+	}
+
+	public void toEnterPayingByOptnInAddPayment(String text)
+	{
+		gen.selectByVisibleText(driver, payingbyinaddpayment, text);
+	}
+	
+	public void toEnterNoteInAddPayment(String value)
+	{
+		webaction.enterTheValue(driver, noteinaddpayment, value);
+	}
+	
+	public void toClickOnAddPaymentBtnInAddPayment()
+	{ 
+		webaction.clickOnTheElement(driver, addpaymentbtninaddpayment);
+	}
+	
+	public boolean isPaymentAddedSuccessMsgDisplayed()
+	{
+		return webaction.CheckElementIsDisplayed(driver, paymentaddedsuccessmsg);
+	}
+	
+	public void toClickOnPaymentAddedSuccessMsgCloseBtn()
+	{
+		webaction.clickOnTheElement(driver, paymentaddedsuccessmsgclosebtn);
+	}
+	
+	public void toClickOnViewAttachmentOption()
+	{
+		webaction.clickOnTheElement(driver, viewattachementoptn);
+	}
+	
+	public boolean isViewAttachmentHeaderDisplayed()
+	{
+		return webaction.CheckElementIsDisplayed(driver, viewattachmentheader);
+	}
+	
+	public void toClickOnBrowseBtnInViewAttachment()
+	{
+		webaction.clickOnTheElement(driver, browsebtninviewattachment);
+	}
+	
+	public void toClickOnRemoveBtnInViewAttachment()
+	{
+		webaction.clickOnTheElement(driver, removefilebtninviewattachment);
+	}
+	
+	public void toClickOnUploadBtnInViewAttachment()
+	{
+		webaction.clickOnTheElement(driver, uploadbtninviewattachment);
+	}
+	
+	public boolean isDoneSuccessMsgDisplayedInViewAttachment()
+	{
+		return webaction.CheckElementIsDisplayed(driver, donesuccessmsginviewattachment);
+	}
+	
+	public void toClickOnCloseBtnInViewAttachment()
+	{
+		webaction.clickOnTheElement(driver, closebtninviewattachment);
+	}
+	
+	public boolean isViewDetailButtoninViewAttachmentDisplayed()
+	{
+		return webaction.CheckElementIsDisplayed(driver, viewdetailsbuttoninviewattachment);
+	}
+	
+	public void toClickOnInvoiceOptionInActionDropDown()
+	{
+		webaction.clickOnTheElement(driver, invoiceoptn);
+	}
+	
+	public void toClickOnEmailInvoiceOptionInActionDropDown()
+	{
+		webaction.clickOnTheElement(driver, emailinvoiceoptn);
+	}
+	
+	public void toClearValueInEmailAddressTxtBoxInEmailInvoice()
+	{
+		webaction.clearTheElement(driver, emailaddresstxtbxinemailinvoiceoptn);
+	}
+	
+	public void toEnterValueInEmailAddressTxtBoxInEmailInvoice(String value)
+	{
+		webaction.enterTheValue(driver, emailaddresstxtbxinemailinvoiceoptn, value);
+	}
+	
+	public void toClickOkBtnInEmailInvoice()
+	{
+		webaction.clickOnTheElement(driver, okbtninemailinvoiceoptn);
+	}
+	
+	public void toClickOnViewLogOptionInActionDropdown()
+	{
+		webaction.clickOnTheElement(driver, viewlogoptn);
+	}
+	
+	public boolean isViewLogHeaderDisplayed()
+	{
+		return webaction.CheckElementIsDisplayed(driver, viewlogpageheader);
+	}
+	
+	public void toClickOnPrintBarcodeOptionInActionDropdown()
+	{
+		webaction.clickOnTheElement(driver, printbarcodeoptn);
+	}
+	
+	public boolean isPrintBarcodeHeaderDisplayed()
+	{
+		return webaction.CheckElementIsDisplayed(driver, printbarcodeheader);
+	}
+	
+	public void toClickOnUpdateBtnInPrintBarcodePage()
+	{
+		webaction.clickOnTheElement(driver, updatebtninprintbarcodepage);
+	}
+	
+	public void toClickOnPrintBtnInPrintBarcodePage()
+	{
+		webaction.clickOnTheElement(driver, printbtninprintbarcodepage);
+	}
+	
+	public void toNavigateBackToOrderAndReparationsPage()
+	{
+		webbrowser.navigateBack(driver);
+	}
 }

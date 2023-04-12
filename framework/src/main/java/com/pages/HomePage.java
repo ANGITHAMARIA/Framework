@@ -513,4 +513,9 @@ public class HomePage {
 		return new OrderAndReparationsPage(driver);
 	}
 	
+	public InventoryPage navigateToInventoryPage()
+	{
+		toOpenInventoryProductsMoreInfoPage();
+		return new InventoryPage(driver);
+	}
 }

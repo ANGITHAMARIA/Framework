@@ -2,15 +2,15 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
   <test name="Test(failed)">
-    <parameter name="browserName" value="edge"/>
+    <parameter name="browserName" value="chrome"/>
     <classes>
-      <class name="com.test.OrderAndReparationsPageTest">
+      <class name="com.test.InventoryPageTest">
         <methods>
-          <include name="validateFilterResultFunctionalityInReparationTable"/>
           <include name="preRun"/>
           <include name="launchBrowser"/>
+          <include name="validateAddProductFunctionalityInActionsIconInInventoryPage"/>
         </methods>
-      </class> <!-- com.test.OrderAndReparationsPageTest -->
+      </class> <!-- com.test.InventoryPageTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

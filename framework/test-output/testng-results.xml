@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="4" total="5" passed="1">
+<testng-results skipped="0" failed="0" ignored="3" total="4" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="33798" started-at="2023-04-03T15:03:49Z" finished-at="2023-04-03T15:04:23Z">
+  <suite name="Suite" duration-ms="19223" started-at="2023-04-12T11:53:29Z" finished-at="2023-04-12T11:53:48Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="33798" started-at="2023-04-03T15:03:49Z" finished-at="2023-04-03T15:04:23Z">
-      <class name="com.test.OrderAndReparationsPageTest">
-        <test-method status="PASS" signature="launchBrowser(java.lang.String)[pri:0, instance:com.test.OrderAndReparationsPageTest@13805618]" name="launchBrowser" is-config="true" duration-ms="4542" started-at="2023-04-03T20:33:49Z" finished-at="2023-04-03T20:33:54Z">
+    <test name="Test" duration-ms="19223" started-at="2023-04-12T11:53:29Z" finished-at="2023-04-12T11:53:48Z">
+      <class name="com.test.InventoryPageTest">
+        <test-method status="PASS" signature="launchBrowser(java.lang.String)[pri:0, instance:com.test.InventoryPageTest@192b07fd]" name="launchBrowser" is-config="true" duration-ms="3476" started-at="2023-04-12T17:23:29Z" finished-at="2023-04-12T17:23:32Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[edge]]>
+                <![CDATA[chrome]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method status="PASS" signature="preRun()[pri:0, instance:com.test.OrderAndReparationsPageTest@13805618]" name="preRun" is-config="true" duration-ms="27834" started-at="2023-04-03T20:33:54Z" finished-at="2023-04-03T20:34:22Z">
+        <test-method status="PASS" signature="preRun()[pri:0, instance:com.test.InventoryPageTest@192b07fd]" name="preRun" is-config="true" duration-ms="7300" started-at="2023-04-12T17:23:32Z" finished-at="2023-04-12T17:23:40Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- preRun -->
-        <test-method status="PASS" signature="validateColumnVisibilityFunctionalityInReparationTable()[pri:4, instance:com.test.OrderAndReparationsPageTest@13805618]" name="validateColumnVisibilityFunctionalityInReparationTable" duration-ms="1411" started-at="2023-04-03T20:34:22Z" finished-at="2023-04-03T20:34:23Z">
+        <test-method status="PASS" signature="validateEditProductFunctionalityInInventoryPage()[pri:4, instance:com.test.InventoryPageTest@192b07fd]" name="validateEditProductFunctionalityInInventoryPage" duration-ms="8426" started-at="2023-04-12T17:23:40Z" finished-at="2023-04-12T17:23:48Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- validateColumnVisibilityFunctionalityInReparationTable -->
-      </class> <!-- com.test.OrderAndReparationsPageTest -->
+        </test-method> <!-- validateEditProductFunctionalityInInventoryPage -->
+      </class> <!-- com.test.InventoryPageTest -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>

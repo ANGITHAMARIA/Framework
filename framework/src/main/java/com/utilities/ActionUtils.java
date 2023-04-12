@@ -202,6 +202,26 @@ public class ActionUtils {
 	}
 	
 	/**
+	 * This method is to move to an element to the given x & y co-ordinates
+	 * @param driver
+	 * @param x
+	 * @param y
+	 */
+	public void toMoveToElementByOffsetAndClick(WebDriver driver,int x,int y)
+	{
+		Actions action=new Actions(driver);
+		try 
+		{
+			action.moveByOffset(x,y).click().build().perform();
+		} 
+		catch (Exception e) 
+		{
+			System.out.println(e.getMessage());
+			System.out.println(e.getCause());
+		}
+	}
+	
+	/**
 	 * This method is to drag and drop
 	 * @param driver
 	 * @param drag
@@ -220,7 +240,6 @@ public class ActionUtils {
 			System.out.println(e.getCause());
 		}
 	}
-	
 	
 	/**
 	 * This method is to scroll down the page
@@ -309,5 +328,7 @@ public class ActionUtils {
 			System.out.println(e.getCause());
 		}	
 	}
+	
+	 
 	
 }

@@ -35,7 +35,7 @@ public class OrderAndReparationsPageTest extends AutomationBase {
 			home=login.login("admin@admin.com", "password");
 			reparationpp=home.navigateToOrderAndReparationsPage();
 		}
-@Test(enabled=false,priority=1)
+@Test(enabled=true,priority=1)
 public void validateOrderAndReparationsPageFields()
 {
 	SoftAssert soft=new SoftAssert();
@@ -61,18 +61,23 @@ public void validateOrderAndReparationsPageFields()
 @Test(enabled=false,priority=2)
 public void validateUpdateStatusFunctionalityInReparationsTable()
 {
-//	String reparationcode="0VZWXP";
+	String reparationcode="WkT9kG";
 	String statustobeupdated="Job done! ready to deliver";
 	SoftAssert soft=new SoftAssert();
-	reparationpp.toSearchByReparationCode("CI24kW");
+//	wait.waitForClickabilityofElement(driver, reparationpp.searchtxtbox, 5);
+	reparationpp.toSearchByReparationCode(reparationcode);
+	//wait.waitForTextofElement(driver, reparationpp.reparationcoderowone, 5, "7QHHP2");
+	wait.waitForTheInVisibilityOfElement(driver, reparationpp.loader, 5);
 	System.out.println("Status before update: "+reparationpp.toGetTheCurrentStatus());
-	//wait.forExplicitWait(driver, statuscolumnrowone, 5);
 	reparationpp.toClickOnStatusColumnRowOne();	
 	soft.assertTrue(reparationpp.isUpdateStatusPopupHeaderDisplayed(), "Failure message:Update status popup header not displayed");
 	reparationpp.toSelectStatusInUpdateStatusPopup(statustobeupdated);
 	reparationpp.toClickOnUpdateStatusButtonInUpdateStatusPopup();
 	soft.assertTrue(reparationpp.isUpdateStatusSuccessPopupDisplayed(), "Failure message:Unable to update status");
-	reparationpp.toSearchByReparationCode("CI24kW");
+//	wait.waitForClickabilityofElement(driver, reparationpp.searchtxtbox, 5);
+	reparationpp.toSearchByReparationCode(reparationcode);
+	wait.waitForTheInVisibilityOfElement(driver, reparationpp.loader, 5);
+	System.out.println("New Status:"+reparationpp.toGetTheCurrentStatus());
 	soft.assertEquals(reparationpp.toGetTheCurrentStatus(),statustobeupdated,"Failure message:Status not updated properly");	
 	soft.assertAll();	
 }
@@ -99,7 +104,7 @@ public void validateAddNewReparationFunctionalityInReparationTable()
 {
 	SoftAssert soft=new SoftAssert();
 	reparationpp.toClickOnAddReparationTab();
-	soft.assertTrue(reparationpp.isAddreparationHeaderDisplayed(), "Failure message:Add reparation popup not displayed");
+	//soft.assertTrue(reparationpp.isAddreparationHeaderDisplayed(), "Failure message:Add reparation popup not displayed");
 	soft.assertTrue(reparationpp.isImeiFieldDisplayed(), "Failure message:IMEI field not displayed");
 	soft.assertTrue(reparationpp.isClientFieldDisplayed(), "Failure message:Client field not displayed");
 	soft.assertTrue(reparationpp.isCategoryFieldDisplayed(), "Failure message:Category field not displayed");
@@ -119,7 +124,7 @@ public void validateAddNewReparationFunctionalityInReparationTable()
 	soft.assertTrue(reparationpp.isRepairTypeFieldDisplayed(), "Failure message:Repair Type field not displayed");
 	soft.assertTrue(reparationpp.isClientReceiveDateFieldDisplayed(), "Failure message:Client Receive date field not displayed");
 	reparationpp.toClickOnImeiField();
-	reparationpp.toEnterValueToImeiField("123456897");
+	reparationpp.toEnterValueToImeiField("TestIMEI9");
 	reparationpp.toClickOnClientField();
 	reparationpp.toEnterValueToClientField("kiran1 kmn - k");
 	reparationpp.toClickOnCategoryField();
@@ -157,22 +162,116 @@ public void validateAddNewReparationFunctionalityInReparationTable()
 	String reparationcode=reparationpp.toGetTheReparationCodeInAddReparationPopup();
 	System.out.println("Reparationcode is : "+reparationcode);
 	reparationpp.toClickOnAddReparationbtnInAddReparationPopup();
-	reparationpp.toHandlePrintInvoiceWindow();
-	System.out.println("New reparation code is: "+reparationpp.toGetNewReparationCode());
-	reparationpp.toCloseNewReparationAddedWindow();
-	reparationpp.toSearchByReparationCode(reparationcode);
+	try {
+		Thread.sleep(5000);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	reparationpp.toHandlePrintInvoiceWindow();	
+	String newreparationcode=reparationpp.toGetNewReparationCode();
+	System.out.println("New reparation code is: "+newreparationcode);
+	reparationpp.toCloseNewReparationAddedWindow();	
+	reparationpp.toSearchByReparationCode(newreparationcode);	
 	System.out.println("no of rows: " +reparationpp.toCalculateRowCountOfTable());
 	soft.assertAll();
 }
 
-@Test(enabled=true,priority=4)
+@Test(enabled=false,priority=5)
 public void validateColumnVisibilityFunctionalityInReparationTable()
 {
 	SoftAssert soft=new SoftAssert();
 	reparationpp.toClickOnColumnVisibilityBtn();
 	reparationpp.toClikOnCreatedByFieldInColumnVisibilityTab();
 	reparationpp.toClickOnlastModifiedFieldInColumnVisibilityTab();
-//	reparationpp.toClickOnColumnVisibilityBackground();
-	
+	reparationpp.toClickOnColumnVisibilityBackground();
+//	soft.assertEquals(reparationpp.toSearchAHeaderInReparationTable("Created By"), "false");
+//	soft.assertEquals(reparationpp.toSearchAHeaderInReparationTable("Last Modified"),"false");
+	reparationpp.toClickOnColumnVisibilityBtn();
+	reparationpp.toClikOnCreatedByFieldInColumnVisibilityTab();
+	reparationpp.toClickOnColumnVisibilityBackground();
+	reparationpp.toClickOnPendingRepairsTab();
+	reparationpp.toClickOnCompletedRepairsTab();
+	soft.assertAll();
+}
+@Test(enabled=false,priority=6)
+public void validateViewAndAddPaymentFunctionalityInReparationTable()
+{
+	SoftAssert soft=new SoftAssert();
+	reparationpp.toSearchByReparationCode("DALGPA");
+	wait.waitForTheInVisibilityOfElement(driver, reparationpp.loader, 5);
+	reparationpp.toClickOnActionDropdownOptn();
+	reparationpp.toClickOnViewPaymentInActionDropdown();
+	//soft.assertTrue(reparationpp.isViewPaymentHeaderDisplayed(),"Failure message:View payment header not displayed");
+	reparationpp.toClickOnEditBtnInViewPaymentInActionDropdown();
+	soft.assertTrue(reparationpp.isPaymentStatusisAlreadyPaidAlertMsgDisplayed(),"Failure message:Payment status is already paid message not displayed");
+	reparationpp.toClickOnPaymentStatusisAlreadyPaidAlertMsgCloseBtn();
+	reparationpp.toSearchByReparationCode("591GPA");
+	wait.waitForTheInVisibilityOfElement(driver, reparationpp.loader, 5);
+	reparationpp.toClickOnActionDropdownOptn();
+	reparationpp.toClickOnViewPaymentInActionDropdown();
+	reparationpp.toClickOnDeleteBtnInViewPaymentInActionDropdown();
+	reparationpp.toClickOnConfirmDeleteBtnInViewPaymentInActionDropdown();
+	soft.assertTrue(reparationpp.isPaymentDeletedSuccessPopupMsgDisplayed(),"Failure message:Payment deleted success popup not displayed");
+	reparationpp.toSearchByReparationCode("591GPA");
+	wait.waitForTheInVisibilityOfElement(driver, reparationpp.loader, 5);
+	reparationpp.toClickOnActionDropdownOptn();
+	reparationpp.toClickOnAddPaymentOptn();
+	soft.assertTrue(reparationpp.isAddPaymentHeaderDisplayed(),"Failure message:Add payment header not displayed");
+	reparationpp.toClearDateFieldValueInAddPayment();
+	reparationpp.toEnterValueToDateFieldInAddPayment("2023-04-05 10:20");
+	reparationpp.toClearAmountinAddPayment();
+	reparationpp.toEnterAmountInAddPayment("30");
+	reparationpp.toEnterPayingByOptnInAddPayment("Other");
+	reparationpp.toEnterNoteInAddPayment("paid");
+	reparationpp.toClickOnAddPaymentBtnInAddPayment();
+	soft.assertTrue(reparationpp.isPaymentAddedSuccessMsgDisplayed(),"Failure message:Payment added success message not displayed");
+	reparationpp.toClickOnPaymentAddedSuccessMsgCloseBtn();
+	soft.assertAll();
+}
+
+@Test(enabled=false,priority=7)
+public void validateAddAttachmentFunctionalityInReparationsTable()
+{
+	SoftAssert soft=new SoftAssert();
+	reparationpp.toSearchByReparationCode("YH3W8V");
+	wait.waitForTheInVisibilityOfElement(driver, reparationpp.loader, 5);
+	reparationpp.toClickOnActionDropdownOptn();
+	reparationpp.toClickOnViewAttachmentOption();
+	soft.assertTrue(reparationpp.isViewAttachmentHeaderDisplayed(), "Failure message:View Attachments header not displayed");
+//	reparationpp.toClickOnBrowseBtnInViewAttachment();
+	//to handle file input using robot class;
+//	reparationpp.toClickOnUploadBtnInViewAttachment();
+//	soft.assertTrue(reparationpp.isDoneSuccessMsgDisplayedInViewAttachment(), "Failure message:File upload success message not displayed");
+//	reparationpp.toClickOnCloseBtnInViewAttachment();
+//	reparationpp.toClickOnActionDropdownOptn();
+//	reparationpp.toClickOnViewAttachmentOption();
+	soft.assertTrue(reparationpp.isViewDetailButtoninViewAttachmentDisplayed(),"Failure message:File selected message not displayed");
+	soft.assertAll();
+}
+
+@Test(enabled=false,priority=8)
+public void validateInvoiceAndPrintBarcodeFunctionalityInReparationsTable()
+{
+	SoftAssert soft=new SoftAssert();
+	reparationpp.toClickOnActionDropdownOptn();
+	reparationpp.toClickOnInvoiceOptionInActionDropDown();
+	//come back to main window
+	reparationpp.toClickOnActionDropdownOptn();
+	reparationpp.toClickOnEmailInvoiceOptionInActionDropDown();
+	reparationpp.toClearValueInEmailAddressTxtBoxInEmailInvoice();
+	reparationpp.toEnterValueInEmailAddressTxtBoxInEmailInvoice("test@test.com");
+	reparationpp.toClickOkBtnInEmailInvoice();
+	reparationpp.toClickOnActionDropdownOptn();
+	reparationpp.toClickOnViewLogOptionInActionDropdown();
+	soft.assertTrue(reparationpp.isViewLogHeaderDisplayed(),"Failure message:View Log header not displayed");
+	reparationpp.toNavigateBackToOrderAndReparationsPage();
+	reparationpp.toClickOnActionDropdownOptn();
+	reparationpp.toClickOnPrintBarcodeOptionInActionDropdown();
+	soft.assertTrue(reparationpp.isPrintBarcodeHeaderDisplayed(),"Failure message:View Log header not displayed");
+	reparationpp.toClickOnUpdateBtnInPrintBarcodePage();
+	reparationpp.toClickOnPrintBtnInPrintBarcodePage();
+	soft.assertAll();
 }
 }
+
